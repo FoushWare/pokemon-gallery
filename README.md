@@ -5,6 +5,8 @@
 - [x] init the project with vite
 - [x] Setting up github pages
 - [ ] Setting up ant design with react and reuse it's components
+- [ ] Setting up react query to fetch data from the api and cache it
+- [ ] Setting up react router to navigate between the two views
 
 ## working on the first view of the app
 
