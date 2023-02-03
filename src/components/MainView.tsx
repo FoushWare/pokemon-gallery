@@ -1,5 +1,5 @@
 // pokemon main view
-import { Card } from 'antd'
+import { Button, Card, Col, Row } from 'antd'
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import PokemonCard from './PokemonCard'
@@ -38,27 +38,61 @@ function MainView() {
 			) : (
 				// ant desgin pagination to display the pokemon data
 				<>
-					<div>
+					{/* 3 cards in each row   */}
+					<Row >
 						{data.results.map((pokemon: any) => (
-							<PokemonCard key={pokemon.name} pokemon={pokemon} />
+							<Col xs={24} sm={24} md={12} lg={8} xl={8}
+
+								style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}
+							>
+								<PokemonCard key={pokemon.name} pokemon={pokemon} />
+							</Col>
 						))}
-					</div>
-					<div>
-						<button
+					</Row>
+
+
+
+					<div style={{ margin: '20px' }}>
+						<Button
+							size='large'
 							onClick={() => setPage((old: any) => Math.max(old - 6, 0))}
 							disabled={page === 0}
+							style={{
+								margin: '0px 10px',
+								// if the button is not disabled then show the color else show the grey color
+								background: page === 0 ? 'grey' : '#EF5350',
+								color: 'white',
+								// when hover over the button show the pointer cursor and when it's disabled show the not allowed cursor
+								cursor: page === 0 ? 'not-allowed' : 'pointer',
+								// make text uppercase
+								textTransform: 'uppercase',
+								padding: '0px 2rem',
+
+							}}
 						>
 							Previous
-						</button>
-						<span>{page / 6 + 1}</span>
-						<button
+						</Button>
+						<Button
+							size='large'
 							onClick={() =>
 								setPage((old: any) => (old + 6 > 100 ? old : old + 6))
 							}
 							disabled={page + 6 > 100}
+
+							style={{
+								margin: '0px 10px',
+								// if the button is not disabled then show the color else show the grey color
+								background: page + 6 > 100 ? 'grey' : '#EF5350',
+								color: 'white',
+								// when hover over the button show the pointer cursor and when it's disabled show the not allowed cursor
+								cursor: page + 6 > 100 ? 'not-allowed' : 'pointer',
+								textTransform: 'uppercase',
+								padding: '0px 2rem',
+
+							}}
 						>
 							Next
-						</button>
+						</Button>
 					</div>
 
 				</>

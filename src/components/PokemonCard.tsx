@@ -5,6 +5,7 @@ import React from 'react'
 import { Card, Col, Row } from 'antd'
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import Meta from 'antd/es/card/Meta'
 
 interface PokemonCardProps {
 	pokemon: any
@@ -21,6 +22,21 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
 	)
 
 
+	// get the pokemon abilities with english language
+	const { isLoading: isLoadingAbilities, error: errorAbilities, data: dataAbilities }: any = useQuery(
+		`${pokemon.name} abilities`,
+		() =>
+			fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.name}`).then(
+				(res) => res.json()
+			),
+		{
+			enabled: !isLoading && !error,
+		}
+	)
+
+
+
+
 
 	return (
 		<>
@@ -35,14 +51,45 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
 				<Card
 					style={{ width: 300 }}
 					cover={
-						<img
-							alt="example"
-							src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'
-						/>
+						<div
+							style={{
+								background: '#EBF5F0'
+							}}
+						>
+							<img
+								alt="example"
+								src={data.sprites.front_default}
+
+							/>
+						</div>
+
 					}
+
 				>
+					<Meta
+						title={<Link to={`/pokemon/${data.name}`}> {data.name} </Link>}
+						description={
+							<>
+								<p>
+									{
+										// display abilities with english language limit characters to 100
+										dataAbilities
+											? dataAbilities.flavor_text_entries
+												.filter((item: any) => item.language.name === 'en')
+												.map((item: any) => item.flavor_text)
+												.join(' ')
+												.slice(0, 100)
+											: ''
+									}
+								</p>
+							</>
+						}
+					/>
+
+
 				</Card>
-			)}
+			)
+			}
 
 		</>
 
