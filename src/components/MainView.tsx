@@ -29,7 +29,7 @@ function MainView() {
 
 
 	return (
-		<>
+		<div className='container'>
 			{isLoading ? (
 				// show skeleton card while loading
 				<Card loading={true} style={{ width: 300 }} />
@@ -101,7 +101,7 @@ function MainView() {
 
 
 			)}
-		</>
+		</div>
 	)
 }
 

@@ -20,6 +20,13 @@
 	align-items: center;
 	justify-content: space-between;
 }
+/* media for small devices */
+
+@media (max-width: 768px) {
+	.nav-wrapper {
+		flex-direction: column;
+	}
+}
 .container {
 	width: 90%;
 	margin: 0 auto;
@@ -42,4 +49,11 @@
 	background: #e3756f;
 	color: #eda4a0;
 	font-size: 15px;
+}
+/* media for small devices */
+@media screen and (max-width: 768px) {
+	.search {
+		width: 100%;
+		margin-bottom: 15px;
+	}
 }
