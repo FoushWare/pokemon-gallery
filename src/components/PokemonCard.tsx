@@ -2,7 +2,7 @@
 // name and image description pokemon type and pokemon abilities
 
 import React from 'react'
-import { Card, Col, Row } from 'antd'
+import { Badge, Card, Col, Row } from 'antd'
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import Meta from 'antd/es/card/Meta'
@@ -64,10 +64,19 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
 						</div>
 
 					}
+					// when click on the card redirect to the pokemon details page
+					onClick={() => {
+						window.location.href = `pokemon/${pokemon.name}`
+					}}
+					// when hover on the card show cursor pointer
+					hoverable
+
+
+
 
 				>
 					<Meta
-						title={<Link to={`/pokemon/${data.name}`}> {data.name} </Link>}
+						title={data.name}
 						description={
 							<>
 								<p>
@@ -84,6 +93,19 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
 								</p>
 							</>
 						}
+					/>
+					<Badge
+						count={data.types[0].type.name}
+						size="default"
+						style={{
+							// background color based on the pokemon type
+							backgroundColor: data.types[0].type.name === 'grass' ? '#7CFC00' : data.types[0].type.name === 'fire' ? '#FF4500' : data.types[0].type.name === 'water' ? '#00BFFF' : data.types[0].type.name === 'bug' ? '#F0E68C' : data.types[0].type.name === 'normal' ? '#F5F5DC' : data.types[0].type.name === 'poison' ? '#EE82EE' : data.types[0].type.name === 'electric' ? '#FFFF00' : data.types[0].type.name === 'ground' ? '#D2B48C' : data.types[0].type.name === 'fairy' ? '#FFB6C1' : data.types[0].type.name === 'fighting' ? '#B22222' : data.types[0].type.name === 'psychic' ? '#FF1493' : data.types[0].type.name === 'rock' ? '#BDB76B' : data.types[0].type.name === 'ghost' ? '#4B0082' : data.types[0].type.name === 'ice' ? '#00FFFF' : data.types[0].type.name === 'dragon' ? '#FFD700' : data.types[0].type.name === 'dark' ? '#A9A9A9' : data.types[0].type.name === 'steel' ? '#D3D3D3' : data.types[0].type.name === 'flying' ? '#87CEEB' : '#fff',
+							color: '#fff',
+							marginTop: 10,
+							width: '100%',
+							textAlign: 'center',
+
+						}}
 					/>
 
 

@@ -10,12 +10,15 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import DetailView from './components/DetailView'
 import MainView from './components/MainView'
 import NotFoundPage from './components/404';
+import Header from './components/Header';
 
 function App() {
 
   return (
     <>
       <QueryClientProvider client={new QueryClient()}>
+        <Header />
+
         {/* routes to main view and detail view for pokemon */}
         <Router>
           <Routes>
