@@ -53,7 +53,7 @@ function MainView({
 
 
 
-					<div style={{ margin: '20px' }}>
+					<div className="prevnextbtn">
 						<Button
 							size='large'
 							onClick={() => setPage((old: any) => Math.max(old - 6, 0))}

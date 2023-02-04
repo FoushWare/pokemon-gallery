@@ -30,7 +30,11 @@ export default function Header() {
 	// bind the options to the search bar from the api  when data is loaded 
 	useEffect(() => {
 		if (data) {
-			setOptions(data.results.map((pokemon: any) => ({ value: pokemon.name })))
+			setOptions(data.results.map((pokemon: any) => ({
+				value:
+					// link to the detail view
+					<a href={`pokemon/${pokemon.name}`}>{pokemon.name}</a>
+			})))
 		}
 	}
 		, [data])
