@@ -1,11 +1,9 @@
-/** @format */
+/**
+ * navbar styles for PokeAPI navbar
+ *
+ * @format
+ */
 
-#root {
-	margin: 0 auto;
-	text-align: center;
-}
-
-/* navbar styles for PokeAPI navbar*/
 .navbar {
 	background-color: #ef5350;
 	/* make the navbar sticky  */

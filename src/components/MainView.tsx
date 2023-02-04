@@ -4,7 +4,8 @@ import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import PokemonCard from './PokemonCard'
 
-function MainView() {
+function MainView({
+}) {
 
 	// hook for page
 	const [page, setPage] = useState(0)
