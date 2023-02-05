@@ -12,6 +12,7 @@ import MainView from './components/MainView'
 import NotFoundPage from './components/404';
 import Header from './components/Header';
 import { useState } from 'react';
+import { ConfigProvider } from 'antd';
 
 
 function App() {
@@ -21,19 +22,27 @@ function App() {
     <>
 
       <QueryClientProvider client={new QueryClient()}>
-        <Header />
-        {/* routes to main view and detail view for pokemon */}
-        <Router>
-          <Routes>
-            {/* main view  */}
-            <Route path="/" element={<MainView />} />
-            {/* detailed view */}
-            <Route path="pokemon/:pokemonId" element={<DetailView />}
-            />
-            {/* fallback for 404 */}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Router>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#EF5350',
+            },
+          }}
+        >
+          <Header />
+          {/* routes to main view and detail view for pokemon */}
+          <Router>
+            <Routes>
+              {/* main view  */}
+              <Route path="/" element={<MainView />} />
+              {/* detailed view */}
+              <Route path="pokemon/:pokemonId" element={<DetailView />}
+              />
+              {/* fallback for 404 */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Router>
+        </ConfigProvider>
       </QueryClientProvider>
     </>
   )

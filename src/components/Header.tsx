@@ -34,7 +34,9 @@ export default function Header() {
 			setOptions(data.results.map((pokemon: any) => ({
 				value:
 					// link to the detail view
-					<Link to={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
+					<a href={`/pokemon/${pokemon.name}`} key={pokemon.name} >
+						{pokemon.name}
+					</a>
 			})))
 		}
 	}

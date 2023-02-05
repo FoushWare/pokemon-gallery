@@ -16,7 +16,7 @@ const NotFoundPage: React.FC = () => (
 			onClick={
 				// Go back to the home page 
 				() => {
-					window.location.href = '/pokemon-gallery/'
+					window.location.href = '/'
 				}
 			}
 
