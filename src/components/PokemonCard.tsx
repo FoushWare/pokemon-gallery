@@ -3,7 +3,7 @@
 
 import React from 'react'
 import { Badge, Card, Col, Row } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import Meta from 'antd/es/card/Meta'
 
@@ -12,6 +12,11 @@ interface PokemonCardProps {
 }
 
 export default function PokemonCard({ pokemon }: PokemonCardProps) {
+	// navigator to the pokemon detail view
+	const navigate = useNavigate();
+
+
+
 	// pokemon return data from the API is name and url
 	// we need to fetch the pokemon data from the url
 	// and display the pokemon name, image, type and abilities
@@ -66,7 +71,7 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
 					}
 					// when click on the card redirect to the pokemon details page
 					onClick={() => {
-						window.location.href = `pokemon/${pokemon.name}`
+						navigate(`/pokemon/${pokemon.name}`)
 					}}
 					// when hover on the card show cursor pointer
 					hoverable

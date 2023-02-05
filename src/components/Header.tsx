@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { AutoComplete, Input } from 'antd'
 import { useQuery } from 'react-query';
 import { SearchOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
 
@@ -33,7 +34,7 @@ export default function Header() {
 			setOptions(data.results.map((pokemon: any) => ({
 				value:
 					// link to the detail view
-					<a href={`pokemon/${pokemon.name}`}>{pokemon.name}</a>
+					<Link to={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
 			})))
 		}
 	}
