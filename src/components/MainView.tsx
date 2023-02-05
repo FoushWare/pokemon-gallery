@@ -32,8 +32,46 @@ function MainView({
 	return (
 		<div className='container'>
 			{isLoading ? (
-				// show skeleton card while loading
-				<Card loading={true} style={{ width: 300 }} />
+				// grid of chard skeleton loading
+				<div className='loading'>
+					<Row>
+						<Col xs={24} sm={24} md={12} lg={8} xl={8}
+							style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}
+
+						>
+							<Card loading={true} />
+						</Col>
+						<Col xs={24} sm={24} md={12} lg={8} xl={8}
+							style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}
+						>
+							<Card loading={true} />
+						</Col>
+						<Col xs={24} sm={24} md={12} lg={8} xl={8}
+							style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}
+						>
+							<Card loading={true} />
+						</Col>
+						<Col xs={24} sm={24} md={12} lg={8} xl={8}
+							style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}
+
+						>
+							<Card loading={true} />
+						</Col>
+						<Col xs={24} sm={24} md={12} lg={8} xl={8}
+							style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}
+
+						>
+							<Card loading={true} />
+						</Col>
+						<Col xs={24} sm={24} md={12} lg={8} xl={8}
+							style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}
+
+						>
+							<Card loading={true} />
+						</Col>
+					</Row>
+				</div>
+
 			) : error ? (
 				<div>Error: {error.message}</div>
 			) : (

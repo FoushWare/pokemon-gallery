@@ -26,9 +26,9 @@ function App() {
         <Router>
           <Routes>
             {/* main view  */}
-            <Route path="/pokemon-gallery/" element={<MainView />} />
+            <Route path="/" element={<MainView />} />
             {/* detailed view */}
-            <Route path="pokemon-gallery/pokemon/:pokemonId" element={<DetailView />}
+            <Route path="pokemon/:pokemonId" element={<DetailView />}
             />
             {/* fallback for 404 */}
             <Route path="*" element={<NotFoundPage />} />
