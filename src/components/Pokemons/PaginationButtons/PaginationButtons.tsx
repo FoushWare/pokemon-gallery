@@ -46,8 +46,7 @@ const PaginationButtons: React.FC<PaginationButton> = ({ page, setPage, total })
 					color: 'white',
 					// when hover over the button show the pointer cursor and when it's disabled show the not allowed cursor
 					cursor: page + 6 > total ? 'not-allowed' : 'pointer',
-					textTransform: 'uppercase',
-					padding: '0px 2rem',
+					textTransform: 'uppercase', padding: '0px 2rem',
 
 				}}
 			>

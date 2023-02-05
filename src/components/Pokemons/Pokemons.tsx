@@ -33,7 +33,7 @@ function MainView() {
 	return (
 		<div className='container'>
 			{isLoading ? (
-				// grid of chard skeleton loading
+				// grid of chard skeleton loading ⏳
 				<div className='loading'>
 					<Row>
 						{/* loop for 6 cards loading skelton */}
@@ -50,12 +50,12 @@ function MainView() {
 						))}
 					</Row>
 				</div>
-
+				// Error  ❌
 			) : error ? (
 				<div>Error: {error.message}</div>
 			) : (
 				<>
-					{/* 3 cards in each row   */}
+					{/* 3 cards in each row  🟢 */}
 					<Row >
 						{data.results.map((pokemon: any) => (
 							<Col xs={24} sm={24} md={12} lg={8} xl={8}

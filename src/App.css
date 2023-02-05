@@ -62,3 +62,32 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.pokemon-badge {
+	color: "#fff";
+	margin-top: 10;
+	width: "100%";
+	text-align: "center";
+}
+.less-than-sign {
+	font-size: 1rem;
+	padding-right: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.back-button {
+	background: #ef5350;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+	height: 40px;
+	border-radius: 5px;
+}
+.badge {
+	color: #fff;
+	font-size: 1rem;
+	margin: 5px;
+	padding: 15px;
+}

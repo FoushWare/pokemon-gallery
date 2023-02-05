@@ -18,13 +18,14 @@ export default function PokemonCard({ pokemon }: any) {
 	const navigate = useNavigate();
 
 
-	// use the pokemon url to fetch the pokemon data from the API
+	// ========================= Start React Query ==== //
+
+	//01- use the pokemon url to fetch the pokemon data from the API
 	const { isLoading, error, data }: any = useQuery(pokemon.name, () =>
 		fetch(pokemon.url).then(res => res.json())
 	)
 
-
-	// get the pokemon abilities with english language
+	//02- get the pokemon abilities with english language
 	const { isLoading: isLoadingAbilities, error: errorAbilities, data: dataAbilities }: any = useQuery(
 		`${pokemon.name} abilities`,
 		() =>
@@ -36,10 +37,7 @@ export default function PokemonCard({ pokemon }: any) {
 		}
 	)
 
-
-
-
-
+	// ==============================End React Query ==== //
 	return (
 		<>
 			{isLoading ? (
@@ -53,17 +51,8 @@ export default function PokemonCard({ pokemon }: any) {
 				<Card
 					style={{ width: 300 }}
 					cover={
-						<div
-							style={{
-								background: '#EBF5F0',
-								textAlign: 'center',
-							}}
-						>
-							<img
-								alt="example"
-								src={data.sprites.front_default}
-
-							/>
+						<div style={{ background: '#EBF5F0', textAlign: 'center', }} >
+							<img alt="example" src={data.sprites.front_default} />
 						</div>
 
 					}
@@ -73,10 +62,6 @@ export default function PokemonCard({ pokemon }: any) {
 					}}
 					// when hover on the card show cursor pointer
 					hoverable
-
-
-
-
 				>
 					<Meta
 						title={data.name}
@@ -99,15 +84,9 @@ export default function PokemonCard({ pokemon }: any) {
 						style={{
 							// background color based on the pokemon type
 							backgroundColor: data.types[0].type.name === 'grass' ? '#7CFC00' : data.types[0].type.name === 'fire' ? '#FF4500' : data.types[0].type.name === 'water' ? '#00BFFF' : data.types[0].type.name === 'bug' ? '#F0E68C' : data.types[0].type.name === 'normal' ? '#F5F5DC' : data.types[0].type.name === 'poison' ? '#EE82EE' : data.types[0].type.name === 'electric' ? '#FFFF00' : data.types[0].type.name === 'ground' ? '#D2B48C' : data.types[0].type.name === 'fairy' ? '#FFB6C1' : data.types[0].type.name === 'fighting' ? '#B22222' : data.types[0].type.name === 'psychic' ? '#FF1493' : data.types[0].type.name === 'rock' ? '#BDB76B' : data.types[0].type.name === 'ghost' ? '#4B0082' : data.types[0].type.name === 'ice' ? '#00FFFF' : data.types[0].type.name === 'dragon' ? '#FFD700' : data.types[0].type.name === 'dark' ? '#A9A9A9' : data.types[0].type.name === 'steel' ? '#D3D3D3' : data.types[0].type.name === 'flying' ? '#87CEEB' : '#fff',
-							color: '#fff',
-							marginTop: 10,
-							width: '100%',
-							textAlign: 'center',
-
 						}}
+						className="pokemon-badge"
 					/>
-
-
 				</Card>
 			)
 			}
