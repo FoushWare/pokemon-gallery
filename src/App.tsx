@@ -1,27 +1,23 @@
-import './App.css'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
-// react query
-import { QueryClient, QueryClientProvider } from 'react-query'
-// Components
-import DetailView from './components/DetailView'
-import MainView from './components/MainView'
-import NotFoundPage from './components/404';
-import Header from './components/Header';
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// react query
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { ConfigProvider } from 'antd';
-
+// Components
+import NotFoundPage from './components/404/404';
+import DetailView from './components/Pokemon/Pokemon';
+import Header from './components/Shared/Header';
+import MainView from './components/Pokemons/Pokemons';
+// glabal styls and ant design
+import './App.css';
 
 function App() {
-  const [search, setSearch] = useState<string>('')
 
   return (
     <>
-
+      {/* react query provider  */}
       <QueryClientProvider client={new QueryClient()}>
+        {/* configure ant Design  */}
         <ConfigProvider
           theme={{
             token: {
@@ -29,6 +25,7 @@ function App() {
             },
           }}
         >
+          {/* Header ... logo , text , search */}
           <Header />
           {/* routes to main view and detail view for pokemon */}
           <Router>

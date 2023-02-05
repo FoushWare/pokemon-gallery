@@ -1,25 +1,22 @@
-// pokemon card component to display the pokemon data
-// name and image description pokemon type and pokemon abilities
 
-import React from 'react'
-import { Badge, Card, Col, Row } from 'antd'
-import { Link, useNavigate } from 'react-router-dom'
-import { useQuery } from 'react-query'
+// ant design
+import { Badge, Card, Skeleton, } from 'antd'
 import Meta from 'antd/es/card/Meta'
+// react router
+import { useNavigate } from 'react-router-dom'
+// react query
+import { useQuery } from 'react-query'
 
-interface PokemonCardProps {
-	pokemon: any
-}
-
-export default function PokemonCard({ pokemon }: PokemonCardProps) {
+/**
+ * 
+ * @param pokemon
+ * @returns Component: pokemon card component to display the pokemon data
+** name and image description pokemon type and pokemon abilities
+ */
+export default function PokemonCard({ pokemon }: any) {
 	// navigator to the pokemon detail view
 	const navigate = useNavigate();
 
-
-
-	// pokemon return data from the API is name and url
-	// we need to fetch the pokemon data from the url
-	// and display the pokemon name, image, type and abilities
 
 	// use the pokemon url to fetch the pokemon data from the API
 	const { isLoading, error, data }: any = useQuery(pokemon.name, () =>
@@ -58,7 +55,8 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
 					cover={
 						<div
 							style={{
-								background: '#EBF5F0'
+								background: '#EBF5F0',
+								textAlign: 'center',
 							}}
 						>
 							<img
@@ -87,13 +85,9 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
 								<p>
 									{
 										// display abilities with english language limit characters to 100
-										dataAbilities
-											? dataAbilities.flavor_text_entries
-												.filter((item: any) => item.language.name === 'en')
-												.map((item: any) => item.flavor_text)
-												.join(' ')
-												.slice(0, 100)
-											: ''
+										!isLoadingAbilities && !errorAbilities ?
+											dataAbilities.flavor_text_entries.filter((item: any) => item.language.name === 'en')[0].flavor_text.slice(0, 100) + '...'
+											: 'default description text'
 									}
 								</p>
 							</>
