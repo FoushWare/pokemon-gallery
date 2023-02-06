@@ -1,10 +1,13 @@
 import { AutoComplete, Input } from "antd";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 
 const PokemonSearch: React.FC = () => {
 	const [value, setValue] = useState('');
 	const [options, setOptions] = useState<{ value: string, key: string }[]>([]);
+
+	const navigator = useNavigate();
 
 	const { isLoading, error, data }: any = useQuery(
 		['pokemons'],
@@ -58,6 +61,7 @@ const PokemonSearch: React.FC = () => {
 
 	const onSelect = (data: any) => {
 		setValue(data);
+		navigator(`/pokemon/${data}`);
 	};
 
 	return (
@@ -67,8 +71,10 @@ const PokemonSearch: React.FC = () => {
 				width: '100%',
 			}}
 			onSearch={onSearch}
+			onChange={(data) => setValue(data)}
 			onSelect={onSelect}
 			value={value}
+			allowClear
 		>
 			<Input.Search size='large' placeholder='Search...' />
 		</AutoComplete>
