@@ -40,6 +40,7 @@ function MainView() {
 						{[...Array(6)].map((item, index) => (
 							<Col xs={24} sm={24} md={12} lg={8} xl={8}
 								style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}
+								key={index}
 							>
 								<Card
 									key={index}
@@ -60,6 +61,7 @@ function MainView() {
 						{data.results.map((pokemon: any) => (
 							<Col xs={24} sm={24} md={12} lg={8} xl={8}
 								style={{ padding: '10px' }}
+								key={pokemon.name}
 							>
 								<PokemonCard key={pokemon.name} pokemon={pokemon} />
 							</Col>
@@ -72,6 +74,7 @@ function MainView() {
 						page={page}
 						setPage={setPage}
 						total={Number(100)}
+						isLoading={isLoading}
 					/>
 
 

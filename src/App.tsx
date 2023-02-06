@@ -25,10 +25,10 @@ function App() {
             },
           }}
         >
-          {/* Header ... logo , text , search */}
-          <Header />
           {/* routes to main view and detail view for pokemon */}
           <Router>
+            {/* Header ... logo , text , search */}
+            <Header />
             <Routes>
               {/* main view  */}
               <Route path="/" element={<MainView />} />

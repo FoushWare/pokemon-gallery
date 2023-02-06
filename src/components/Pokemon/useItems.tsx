@@ -14,6 +14,11 @@ import { useQuery } from "react-query";
 
 // create a custom hook for fetching data from API with react query and pagination
 
+/**
+ * 
+ * @param pokemonId  pokemon id from the url
+ * @returns  pokemon data and navigation tabs for stats, moves and abilities
+ */
 const useItems = (pokemonId: string | undefined) => {
 
 	const { Text } = Typography;
@@ -47,16 +52,17 @@ const useItems = (pokemonId: string | undefined) => {
 							{/* td key and value */}
 
 							{data?.stats.map((stat: any) => (
-								<table key={stat.stat.name} style={{
-									width: '100%',
-									// no spacing between the table cells
-									borderSpacing: '0px',
-									// no spacing between the table cells
-									borderCollapse: 'collapse',
+								<table key={stat.stat.name}
+									style={{
+										width: '100%',
+										// no spacing between the table cells
+										borderSpacing: '0px',
+										// no spacing between the table cells
+										borderCollapse: 'collapse',
 
 
 
-								}}>
+									}}>
 									<tbody>
 										<tr>
 											<td style={{ width: '200px', borderRight: '2px solid #000000' }}>

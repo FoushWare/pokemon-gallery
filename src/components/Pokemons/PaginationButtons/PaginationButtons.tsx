@@ -1,13 +1,14 @@
-import { Button } from "antd"
+import { Button, Spin } from "antd"
 
 // PaginationButton interface
 interface PaginationButton {
 	page: number
 	setPage: React.Dispatch<React.SetStateAction<number>>
-	total: number
+	total: number,
+	isLoading: boolean,
 }
 // prevnext btn 
-const PaginationButtons: React.FC<PaginationButton> = ({ page, setPage, total }) => {
+const PaginationButtons: React.FC<PaginationButton> = ({ page, setPage, total, isLoading }) => {
 	return (
 		<div className="prevnextbtn">
 			<Button
@@ -16,7 +17,7 @@ const PaginationButtons: React.FC<PaginationButton> = ({ page, setPage, total })
 					setPage((old: number) => (old === 0 ? old : old - 6))
 				}
 
-				disabled={page === 0}
+				disabled={page === 0 || isLoading}
 				style={{
 					margin: '0px 10px',
 					// if the button is not disabled then show the color else show the grey color
@@ -30,14 +31,14 @@ const PaginationButtons: React.FC<PaginationButton> = ({ page, setPage, total })
 
 				}}
 			>
-				Previous
+				{isLoading ? <Spin /> : 'Previous'}
 			</Button>
 			<Button
 				size='large'
 				onClick={() =>
 					setPage((old: any) => (old + 6 > total ? old : old + 6))
 				}
-				disabled={page + 6 > total}
+				disabled={page + 6 > total || isLoading}
 
 				style={{
 					margin: '0px 10px',
@@ -50,7 +51,7 @@ const PaginationButtons: React.FC<PaginationButton> = ({ page, setPage, total })
 
 				}}
 			>
-				Next
+				{isLoading ? <Spin /> : 'Next'}
 			</Button>
 		</div>
 	)

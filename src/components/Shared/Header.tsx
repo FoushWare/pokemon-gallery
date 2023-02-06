@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { AutoComplete, Input } from 'antd'
 import { useQuery } from 'react-query';
-import { SearchOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Header() {
+
+	const navigator = useNavigate();
 
 	// get all pokemons names from the api  one time
 	const { isLoading, error, data }: any = useQuery(
@@ -24,19 +25,18 @@ export default function Header() {
 
 
 	const [value, setValue] = useState('');
-	const [options, setOptions] = useState<{ value: string }[]>([
+	const [options, setOptions] = useState<{ value: string, key: string }[]>([
 	]);
 
 
 	// bind the options to the search bar from the api  when data is loaded 
 	useEffect(() => {
 		if (data) {
-			setOptions(data.results.map((pokemon: any) => ({
-				value:
-					// link to the detail view
-					<a href={`/pokemon/${pokemon.name}`} key={pokemon.name} >
-						{pokemon.name}
-					</a>
+			setOptions(data.results.map((pokemon: any, index: number) => ({
+				key: pokemon.name,
+				value: pokemon.name
+
+
 			})))
 		}
 	}
@@ -48,9 +48,7 @@ export default function Header() {
 	const onSearch = (searchText: string) => {
 		// if the search text is empty, then return the original options
 		if (!searchText) {
-			setOptions(data.results.map((pokemon: any) => ({ value: pokemon.name })))
-
-
+			setOptions(data.results.map((pokemon: any) => ({ value: pokemon.name, key: pokemon.name })))
 		}
 		else {
 			// if the search text is not empty, then filter the options
@@ -58,18 +56,23 @@ export default function Header() {
 		}
 		// if the is not search match, then return array with no match
 		if (options.length === 0) {
-			setOptions([{ value: 'No match' }]);
+			setOptions([{ value: 'No match', key: 'no match' }]);
 		}
 
 	};
 
-	const onSelect = (data: string) => {
-		console.log('onSelect', data);
-	};
+	//  onselect function to navigate to the detail view
+	const onSelect = (value: string) => {
+		console.log('lol', value)
+		// navigate to the detail view
+		navigator(`/pokemon/${value}`)
+	}
+	// onChange function to update the value of the search bar
+	// const onChange = (value: string) => {
+	// 	setValue(value)
+	// }
 
-	const onChange = (data: string) => {
-		setValue(data);
-	};
+
 
 
 	return (
@@ -98,7 +101,7 @@ export default function Header() {
 
 								}}
 								onSelect={onSelect}
-								onChange={onChange}
+								// onChange={onChange}
 								onSearch={onSearch}
 
 							>
