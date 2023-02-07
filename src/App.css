@@ -39,6 +39,10 @@
 	gap: 20px;
 	height: 64px;
 }
+.navbar-brand:hover {
+	/* pointer cursor */
+	cursor: pointer;
+}
 .navbar-brand img {
 	width: 105px;
 	height: 42px;

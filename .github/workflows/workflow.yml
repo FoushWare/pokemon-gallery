@@ -23,8 +23,9 @@ jobs:
         run: npm install && npm run build
 
       - name: Deploy
-        uses: amondnet/vercel-action@v21
+        uses: amondnet/vercel-action@master
         with:
+          scope: ${{ secrets.ORG_ID}}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
