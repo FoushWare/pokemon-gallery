@@ -1,11 +1,7 @@
-import { Avatar, Badge, Button, Card, Space, Tabs, Tag } from 'antd';
+import { Avatar, Badge, Button, Card, Tabs, Typography } from 'antd';
 import Meta from 'antd/es/card/Meta';
-import React, { useState } from 'react'
-import { useQuery } from 'react-query';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import type { TabsProps } from 'antd';
-import Paragraph from 'antd/es/skeleton/Paragraph';
-import { Typography, Divider } from 'antd';
 import useItems from './useItems';
 
 
@@ -55,7 +51,12 @@ export default function DetailView() {
 							/>
 
 						}
-						title={<h1>{data?.name} </h1>}
+						title={
+							<Typography.Title level={3} style={{ margin: 0 }}>
+
+								{data?.name}
+							</Typography.Title>
+						}
 						description={
 							// badge for pokemon type
 							<>
